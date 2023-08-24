@@ -1,0 +1,53 @@
+<h1 class="title">Country Infos</h1>
+<!--ngModel - two-way data binding , ngModelChange - value deyisende ise dusur-->
+<div id="custom-search-input">
+  <div class="input-group col-md-12">
+    <input
+      type="text"
+      class="form-control input-lg"
+      [(ngModel)]="filterStr"
+      placeholder="Enter country name"
+      (ngModelChange)="filterCountries($event)"
+    />
+    <span class="input-group-btn">
+      <button class="btn btn-info btn-lg" type="button">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </span>
+  </div>
+</div>
+
+<table class="container">
+  <thead>
+    <tr>
+      <th class="id"> 
+        <h1>Id</h1>
+      </th>
+      <th>
+        <h1>Country Name</h1>
+      </th>
+      <th class="region">
+        <h1>Region</h1>
+      </th>
+      <th>
+        <h1>Capital</h1>
+      </th>
+      <th>
+        <h1>Language</h1>
+      </th>
+      <th>
+        <h1>Currencies</h1>
+      </th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let country of filteredCountries; let i = index">
+    <tr>
+      <td>{{ i + 1 }}</td>
+      <td>{{ country.name.common }}</td>
+      <td>{{ country.region }}</td>
+      <td>{{ country.capital }}</td>
+      <td>{{ getData(country?.languages) }}</td>
+      <td>{{ getCurrencies(country?.currencies) }}</td>
+    </tr>
+  </tbody>
+</table>
