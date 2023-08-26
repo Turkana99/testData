@@ -1,0 +1,24 @@
+<div class="p-2">
+  <div class="d-flex justify-content-between">
+    <div><h1 mat-dialog-title>Visit Info</h1></div>
+    <div class="close_btn mt-3">
+      <button mat-dialog-close><i class="fa-solid fa-xmark"></i></button>
+      </div>
+  </div>
+
+  <mat-divider></mat-divider>
+  <ul class="list-unstyled ps-4 pt-3">
+    <li><b>Country: </b> {{ visitInfo.country }}</li>
+    <li><b>Capital: </b> {{ visitInfo.capital }}</li>
+    <li><b>Continent: </b> {{ visitInfo.continent }}</li>
+    <li><b>Border Countries: </b> {{ visitInfo.bordersCountries }}</li>
+    <li><b>Name: </b> {{ visitInfo.name }}</li>
+    <li><b>Person count: </b> {{ visitInfo.personcount }}</li>
+    <li><b>Days count: </b> {{ visitInfo.days }}</li>
+    <li><b>Message: </b> {{ visitInfo.message }}</li>
+  </ul>
+  <mat-divider></mat-divider>
+  <mat-dialog-actions align="end">
+    <button mat-dialog-close class="my_btn">Confirm</button>
+  </mat-dialog-actions>
+</div>

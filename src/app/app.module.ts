@@ -8,11 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AnimalsComponent } from './animals/animals.component';
+import { VisitCountryComponent } from './visit-country/visit-country.component';
+import { AcceptDataComponent } from './dialog/accept-data/accept-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AnimalsComponent,
+    VisitCountryComponent,
+    AcceptDataComponent
   ],
   imports: [
     BrowserModule,

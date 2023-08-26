@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="main-form">
+    <!--Title-->
+    <div class="s-in-up pt-5">
+      <p>SIGN IN</p>
+    </div>
+    <!--Form-->
+    <form class="w-100 form pt-3" [formGroup]="visitForm">
+      <!--Country Select-->
+      <div class="cust-form-group">
+        <label class="align-self-start" for="userName"> SELECT COUNTRY</label>
+        <select formControlName="country">
+          <option value="">Select country</option>
+          <option *ngFor="let country of countryNames">
+            {{ country.name }}
+          </option>
+        </select>
+      </div>
+      <!--Capital-->
+      <div class="cust-form-group">
+        <label class="align-self-start" for="capital">CAPITAL</label>
+        <input type="text" formControlName="capital" />
+      </div>
+      <!--Continent-->
+      <div class="cust-form-group">
+        <label class="align-self-start" for="continent"> CONTINENT</label>
+        <input type="text" formControlName="continent" />
+      </div>
+      <!--BordersCountries-->
+      <div class="cust-form-group">
+        <label class="align-self-start" for="bordersCountries">
+          BORDER COUNTRIES</label
+        >
+        <input type="text" formControlName="bordersCountries" />
+      </div>
+      <!--Name-->
+      <div class="cust-form-group">
+        <label class="align-self-start" for="name"> NAME</label>
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Please enter your name"
+        />
+      </div>
+      <!--Person Count-->
+      <div class="cust-form-group">
+        <label class="align-self-start" for="personcount"> PERSON COUNT</label>
+        <input
+          type="text"
+          formControlName="personcount"
+          placeholder="Please enter your person count"
+        />
+      </div>
+      <!--Days-->
+      <div class="cust-form-group">
+        <label class="align-self-start" for="days">DAYS COUNT</label>
+        <input
+          type="text"
+          formControlName="days"
+          placeholder="Please enter your days count"
+        />
+      </div>
+      <!--message-->
+      <div class="cust-form-group">
+        <label class="align-self-start" for="days">MESSAGE</label>
+        <textarea
+          formControlName="message"
+          placeholder="Please enter your message"
+        ></textarea>
+      </div>
+      <button class="btn w-50" type="submit" (click)="openDialog()" [disabled]="visitForm.invalid">SIGN IN</button>
+    </form>
+  </div>
+</div>
