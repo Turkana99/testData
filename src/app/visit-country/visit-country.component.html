@@ -1,9 +1,7 @@
-<div class="container-fluid">
-  <div class="main-form">
+<div class="container-fluid p-0">
+  <div class="w-100 main-form">
     <!--Title-->
-    <div class="s-in-up pt-5">
-      <p>SIGN IN</p>
-    </div>
+      <p class="title">Visit Country with Us</p>
     <!--Form-->
     <form class="w-100 form pt-3" [formGroup]="visitForm">
       <!--Country Select-->
@@ -46,7 +44,7 @@
       <div class="cust-form-group">
         <label class="align-self-start" for="personcount"> PERSON COUNT</label>
         <input
-          type="text"
+          type="number"
           formControlName="personcount"
           placeholder="Please enter your person count"
         />
@@ -55,7 +53,7 @@
       <div class="cust-form-group">
         <label class="align-self-start" for="days">DAYS COUNT</label>
         <input
-          type="text"
+          type="number"
           formControlName="days"
           placeholder="Please enter your days count"
         />
@@ -68,7 +66,9 @@
           placeholder="Please enter your message"
         ></textarea>
       </div>
-      <button class="btn w-50" type="submit" (click)="openDialog()" [disabled]="visitForm.invalid">SIGN IN</button>
+      <div class="cust-form-group">
+      <button class="btn" type="submit" (click)="openDialog()" [disabled]="visitForm.invalid">Submit</button>
+      </div>
     </form>
   </div>
 </div>

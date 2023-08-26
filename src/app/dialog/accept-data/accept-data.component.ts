@@ -18,6 +18,5 @@ export class AcceptDataComponent implements OnInit{
   ngOnInit(): void {
     this.visitInfo = this.data.visitInfo;
     console.log(this.visitInfo);
-
   }
 }

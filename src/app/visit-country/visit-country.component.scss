@@ -1,15 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-.s-in-up {
+.title {
   color: white;
   font-size: 30px;
   text-align: center !important;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   line-height: 1.42em;
+  padding-top:30px!important;
 }
 .main-form {
   margin: 0 auto;
@@ -29,18 +25,18 @@ form {
 }
 
 input[type="text"],
-input[type="password"],
+input[type="number"],
 select,
 textarea,
 button {
   outline: none !important;
   border: none !important;
-  width: 100%;
   border-radius: 18px;
   margin-top: 7px;
   margin-bottom: 20px;
   padding: 15px !important;
   font-size: 16px;
+  font-family: "Open Sans", sans-serif;
 }
 input:disabled{
 color: white!important;
@@ -67,3 +63,8 @@ label {
   flex-direction: column;
   width: 50%;
 }
+textarea{
+  height:100px;
+}
+ 
+

@@ -33,13 +33,16 @@ export class VisitCountryComponent implements OnInit {
       days: ['', Validators.required],
       message: ['', [Validators.required, Validators.maxLength(250)]],
     });
-    this.visitForm.controls['capital'].disable();
+    this.visitForm.controls['capital'].disable(); // Angular input disable ucun yaziriq
     this.visitForm.controls['continent'].disable();
     this.visitForm.controls['bordersCountries'].disable();
 
+    // ValueChanges input value deyisdiyi halda action ucun ist. olunur
     this.visitForm.controls['country'].valueChanges.subscribe((result) => {
+      // Apiye muracieti birbasa burda yazdiq cunki ayri yazanda funk. apiden cavab almadan ise dusurdu
       this.appService.getCountryName(result).subscribe((response) => {
         // console.log(response);
+        //setValue input-a value set etmek ucun ist. olunur
         this.visitForm.controls['capital'].setValue(
           response[0].capital.join(', ')
         );
@@ -50,7 +53,7 @@ export class VisitCountryComponent implements OnInit {
           // response[0].borders
           //   ? response[0].borders?.join(', ')
           //   : 'This country has no borders.'
-
+          // Burada abbrivationa uygun olke adini getirmek ucun ayrica funk. ist. edirik.
           response[0].borders
             ? this.cca3ToFullCountryName(response[0].borders?.join(', '))
             : 'This country has no borders.'
@@ -63,21 +66,24 @@ export class VisitCountryComponent implements OnInit {
     this.populateCountryOptions();
     this.getAllCountries();
   }
-
+  //populateCountryOptions bu funk. real datanin kopyasinin uzerinde islemek ucun ist. olunur.
   populateCountryOptions() {
     this.countryNames = structuredClone(countriesLookUp);
   }
+  // Name gore olke melumatlarini Apiden elde etmeyimize komek edir.
   getCountry(countryName: string) {
     this.appService.getCountryName(countryName).subscribe((response) => {
       return response[0];
     });
   }
+  // Butun olkelerin datalarini Apiden getirmek ucun ist. olunan funk.
   getAllCountries() {
     this.appService.getAllCountries().subscribe((response: any[]) => {
       this.allCountries = response;
       console.log(this.allCountries);
     });
   }
+  // Dialogumuzun acilmasi ucun ist. olunur
   openDialog() {
     const dialogRef = this.dialog.open(AcceptDataComponent, {
       width: '500px',
@@ -85,16 +91,17 @@ export class VisitCountryComponent implements OnInit {
         top: '250px',
       },
       data: {
-        visitInfo: this.visitForm.getRawValue(),
+        visitInfo: this.visitForm.getRawValue(), // Value yazmadiq cunki o halda set olunmus input datalari gelmeyecekdi.(Disable olan inputlar)
       },
+      //
       scrollStrategy: new NoopScrollStrategy(),
     });
-
+   // Dialog icerisine data-ni oturmek ucun ist. edilir.z
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }
-  //str => IRN, TKM, UZB
+  //str => IRN, TKM, UZB - abbr uygun olke adlarini butov getirmek ucun ist. olunur.
   cca3ToFullCountryName(str: string) {
     console.log(str);
     let abbr = str.split(',').map((x) => x.trim());
@@ -113,12 +120,12 @@ export class VisitCountryComponent implements OnInit {
 
     // Imran - 1
 
-    // for (const elem of abbr) {
-    //   let temp = this.allCountries.find((el) => {
-    //     return el.cca3 == elem;
-    //   });
-    //   countryNames.push(temp.name.common);
-    // }
+    for (const elem of abbr) {
+      let temp = this.allCountries.find((el) => {
+        return el.cca3 == elem;
+      });
+      countryNames.push(temp.name.common);
+    }
 
     result = countryNames.join(', ');
     console.log(result);
